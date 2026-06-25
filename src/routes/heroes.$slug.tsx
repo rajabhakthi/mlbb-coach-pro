@@ -29,7 +29,8 @@ export const Route = createFileRoute("/heroes/$slug")({
 });
 
 function HeroDetail() {
-  const { hero } = Route.useLoaderData();
+  const { slug } = Route.useParams();
+  const hero = heroBySlug(slug)!;
   const [build, setBuild] = useState(hero.builds[0].name);
   const [openSkill, setOpenSkill] = useState<number | null>(0);
   const activeBuild = hero.builds.find((b) => b.name === build)!;
