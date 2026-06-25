@@ -50,7 +50,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             return (
               <Link
                 key={item.to}
-                to={item.to}
+                to={item.to as never}
                 className={[
                   "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all",
                   active
@@ -105,7 +105,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
               const Icon = item.icon;
               return (
-                <Link key={item.to} to={item.to} className="flex flex-col items-center justify-center py-2.5 gap-1">
+                <Link key={item.to} to={item.to as never} className="flex flex-col items-center justify-center py-2.5 gap-1">
                   <Icon className={`w-5 h-5 ${active ? "text-[var(--gold)]" : "text-muted-foreground"}`} />
                   <span className={`text-[10px] ${active ? "text-foreground font-medium" : "text-muted-foreground"}`}>{item.label}</span>
                 </Link>
