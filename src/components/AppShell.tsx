@@ -5,7 +5,8 @@ import {
   Trophy, History, BookOpen, Compass, MessageCircle,
 } from "lucide-react";
 
-const nav = [
+type NavItem = { to: string; label: string; icon: typeof Home; highlight?: boolean };
+const nav: NavItem[] = [
   { to: "/", label: "Home", icon: Home },
   { to: "/start-here", label: "Start Here", icon: Sparkles, highlight: true },
   { to: "/heroes", label: "Heroes", icon: Users },
@@ -17,7 +18,7 @@ const nav = [
   { to: "/ranks", label: "Ranks", icon: Trophy },
   { to: "/patches", label: "Patches", icon: History },
   { to: "/guides", label: "Community Guides", icon: BookOpen },
-] as const;
+];
 
 const soon = [
   { label: "Draft Assistant", icon: Compass },
