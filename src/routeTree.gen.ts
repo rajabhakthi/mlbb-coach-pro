@@ -9,38 +9,264 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StartHereRouteImport } from './routes/start-here'
+import { Route as RolesRouteImport } from './routes/roles'
+import { Route as RanksRouteImport } from './routes/ranks'
+import { Route as PatchesRouteImport } from './routes/patches'
+import { Route as MetaRouteImport } from './routes/meta'
+import { Route as ItemsRouteImport } from './routes/items'
+import { Route as HeroesRouteImport } from './routes/heroes'
+import { Route as GuidesRouteImport } from './routes/guides'
+import { Route as EmblemsRouteImport } from './routes/emblems'
+import { Route as BattleSpellsRouteImport } from './routes/battle-spells'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HeroesIndexRouteImport } from './routes/heroes.index'
+import { Route as HeroesSlugRouteImport } from './routes/heroes.$slug'
 
+const StartHereRoute = StartHereRouteImport.update({
+  id: '/start-here',
+  path: '/start-here',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RolesRoute = RolesRouteImport.update({
+  id: '/roles',
+  path: '/roles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RanksRoute = RanksRouteImport.update({
+  id: '/ranks',
+  path: '/ranks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatchesRoute = PatchesRouteImport.update({
+  id: '/patches',
+  path: '/patches',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetaRoute = MetaRouteImport.update({
+  id: '/meta',
+  path: '/meta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ItemsRoute = ItemsRouteImport.update({
+  id: '/items',
+  path: '/items',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeroesRoute = HeroesRouteImport.update({
+  id: '/heroes',
+  path: '/heroes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesRoute = GuidesRouteImport.update({
+  id: '/guides',
+  path: '/guides',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmblemsRoute = EmblemsRouteImport.update({
+  id: '/emblems',
+  path: '/emblems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BattleSpellsRoute = BattleSpellsRouteImport.update({
+  id: '/battle-spells',
+  path: '/battle-spells',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HeroesIndexRoute = HeroesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HeroesRoute,
+} as any)
+const HeroesSlugRoute = HeroesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => HeroesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/battle-spells': typeof BattleSpellsRoute
+  '/emblems': typeof EmblemsRoute
+  '/guides': typeof GuidesRoute
+  '/heroes': typeof HeroesRouteWithChildren
+  '/items': typeof ItemsRoute
+  '/meta': typeof MetaRoute
+  '/patches': typeof PatchesRoute
+  '/ranks': typeof RanksRoute
+  '/roles': typeof RolesRoute
+  '/start-here': typeof StartHereRoute
+  '/heroes/$slug': typeof HeroesSlugRoute
+  '/heroes/': typeof HeroesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/battle-spells': typeof BattleSpellsRoute
+  '/emblems': typeof EmblemsRoute
+  '/guides': typeof GuidesRoute
+  '/items': typeof ItemsRoute
+  '/meta': typeof MetaRoute
+  '/patches': typeof PatchesRoute
+  '/ranks': typeof RanksRoute
+  '/roles': typeof RolesRoute
+  '/start-here': typeof StartHereRoute
+  '/heroes/$slug': typeof HeroesSlugRoute
+  '/heroes': typeof HeroesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/battle-spells': typeof BattleSpellsRoute
+  '/emblems': typeof EmblemsRoute
+  '/guides': typeof GuidesRoute
+  '/heroes': typeof HeroesRouteWithChildren
+  '/items': typeof ItemsRoute
+  '/meta': typeof MetaRoute
+  '/patches': typeof PatchesRoute
+  '/ranks': typeof RanksRoute
+  '/roles': typeof RolesRoute
+  '/start-here': typeof StartHereRoute
+  '/heroes/$slug': typeof HeroesSlugRoute
+  '/heroes/': typeof HeroesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/battle-spells'
+    | '/emblems'
+    | '/guides'
+    | '/heroes'
+    | '/items'
+    | '/meta'
+    | '/patches'
+    | '/ranks'
+    | '/roles'
+    | '/start-here'
+    | '/heroes/$slug'
+    | '/heroes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/battle-spells'
+    | '/emblems'
+    | '/guides'
+    | '/items'
+    | '/meta'
+    | '/patches'
+    | '/ranks'
+    | '/roles'
+    | '/start-here'
+    | '/heroes/$slug'
+    | '/heroes'
+  id:
+    | '__root__'
+    | '/'
+    | '/battle-spells'
+    | '/emblems'
+    | '/guides'
+    | '/heroes'
+    | '/items'
+    | '/meta'
+    | '/patches'
+    | '/ranks'
+    | '/roles'
+    | '/start-here'
+    | '/heroes/$slug'
+    | '/heroes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BattleSpellsRoute: typeof BattleSpellsRoute
+  EmblemsRoute: typeof EmblemsRoute
+  GuidesRoute: typeof GuidesRoute
+  HeroesRoute: typeof HeroesRouteWithChildren
+  ItemsRoute: typeof ItemsRoute
+  MetaRoute: typeof MetaRoute
+  PatchesRoute: typeof PatchesRoute
+  RanksRoute: typeof RanksRoute
+  RolesRoute: typeof RolesRoute
+  StartHereRoute: typeof StartHereRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/start-here': {
+      id: '/start-here'
+      path: '/start-here'
+      fullPath: '/start-here'
+      preLoaderRoute: typeof StartHereRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roles': {
+      id: '/roles'
+      path: '/roles'
+      fullPath: '/roles'
+      preLoaderRoute: typeof RolesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ranks': {
+      id: '/ranks'
+      path: '/ranks'
+      fullPath: '/ranks'
+      preLoaderRoute: typeof RanksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patches': {
+      id: '/patches'
+      path: '/patches'
+      fullPath: '/patches'
+      preLoaderRoute: typeof PatchesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meta': {
+      id: '/meta'
+      path: '/meta'
+      fullPath: '/meta'
+      preLoaderRoute: typeof MetaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/items': {
+      id: '/items'
+      path: '/items'
+      fullPath: '/items'
+      preLoaderRoute: typeof ItemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/heroes': {
+      id: '/heroes'
+      path: '/heroes'
+      fullPath: '/heroes'
+      preLoaderRoute: typeof HeroesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides': {
+      id: '/guides'
+      path: '/guides'
+      fullPath: '/guides'
+      preLoaderRoute: typeof GuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emblems': {
+      id: '/emblems'
+      path: '/emblems'
+      fullPath: '/emblems'
+      preLoaderRoute: typeof EmblemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/battle-spells': {
+      id: '/battle-spells'
+      path: '/battle-spells'
+      fullPath: '/battle-spells'
+      preLoaderRoute: typeof BattleSpellsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +274,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/heroes/': {
+      id: '/heroes/'
+      path: '/'
+      fullPath: '/heroes/'
+      preLoaderRoute: typeof HeroesIndexRouteImport
+      parentRoute: typeof HeroesRoute
+    }
+    '/heroes/$slug': {
+      id: '/heroes/$slug'
+      path: '/$slug'
+      fullPath: '/heroes/$slug'
+      preLoaderRoute: typeof HeroesSlugRouteImport
+      parentRoute: typeof HeroesRoute
+    }
   }
 }
 
+interface HeroesRouteChildren {
+  HeroesSlugRoute: typeof HeroesSlugRoute
+  HeroesIndexRoute: typeof HeroesIndexRoute
+}
+
+const HeroesRouteChildren: HeroesRouteChildren = {
+  HeroesSlugRoute: HeroesSlugRoute,
+  HeroesIndexRoute: HeroesIndexRoute,
+}
+
+const HeroesRouteWithChildren =
+  HeroesRoute._addFileChildren(HeroesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BattleSpellsRoute: BattleSpellsRoute,
+  EmblemsRoute: EmblemsRoute,
+  GuidesRoute: GuidesRoute,
+  HeroesRoute: HeroesRouteWithChildren,
+  ItemsRoute: ItemsRoute,
+  MetaRoute: MetaRoute,
+  PatchesRoute: PatchesRoute,
+  RanksRoute: RanksRoute,
+  RolesRoute: RolesRoute,
+  StartHereRoute: StartHereRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
